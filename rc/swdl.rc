@@ -1,0 +1,29 @@
+std.parsePack
+    agBoilerplate.parseScripts
+        agBoilerplate^entryPoint
+            ag-Boilerplate/autoGenerate.py
+    agBoilerplate.parseEnd
+    dbNavbar.parseScripts
+        dbNavbar^entryPoint
+            db-Navbar/distributeNavbar.py
+        db-Navbar/webAssets.config
+    dbNavbar.parseEnd
+    jsCherryOnTop.parseScripts
+        jsCherryOnTop^entryPoint
+            js-CherryOnTop/cherryOnTop.py
+        js-CherryOnTop/cotSnips.config
+        [!RECURSIVE] bbbSnippets
+    jsCherryOnTop.parseEnd
+    paSetPageAttributes.parseScripts
+        paSet^entryPoint
+            pa-SetPageAttributes/pa-Set.py
+    paSetPageAttributes.parseEnd
+std.parseEnd
+stdConfig.parsePack
+    agBoilerplateScripts.parseScripts 
+        configFiles/bPath.config
+        configFiles/jPath.config
+        configFiles/jPath.config
+        configFiles/prototypeImages.config
+    agBoilerplateScripts.parseEnd
+stdConfig.parseEnd
