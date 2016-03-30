@@ -17,6 +17,7 @@ scopeQueue = []
 fileList = []
 scriptList = []
 entryPointDic = {}
+tempPackBuffer = ""
 
 global currentParseState
 currentParseState = 0
@@ -42,21 +43,14 @@ def parseRC(lineList, showData):
         endPackData = parsePackEnd.findall(i)
         pathData = parsePath.findall(i)
         entryPointData = parseEntryPoint.findall(i)
-        #check if under current state we are scanning files.
-        if (currentParseState == 1):
-            if(checkMultipleArguments(pathData) == 0):
-                if (showData):
-                    print("Adding: " + pathData[0] + " to fileList.")
-                fileList.append(pathData[0])
-            if currentEntryPointState is True:
-                entryPointDic[scriptList[len(scriptList) - 1].replace(' ', '')] = pathData[0].replace(' ', '')
-                currentEntryPointState = False
 
         #pack data queue push.
         if (checkMultipleArguments(packData) == 0):
             if (showData):
                 print("Pushing: " + packData[0] + " to queue.")
             scopeQueue.append(packData[0])
+            print(packData[0])
+            tempPackBuffer = packData[0]
 
 
         #parse scripts queue push
@@ -67,6 +61,15 @@ def parseRC(lineList, showData):
             scriptList.append(scriptsData[0].replace(' ', ''))
             currentParseState = 1
 
+      #check if under current state we are scanning files.
+        if (currentParseState == 1):
+            if(checkMultipleArguments(pathData) == 0):
+                if (showData):
+                    print("Adding: " + pathData[0] + " to fileList.")
+                    fileList.append("plugins" + "/" + tempPackBuffer + "/" + packData[0].replace(' ', ''))
+            if currentEntryPointState is True:
+                entryPointDic[scriptList[len(scriptList) - 1].replace(' ', '')] = "plugins" + "/" + tempPackBuffer + "/" + pathData[0].replace(' ', '')
+                currentEntryPointState = False
 
         if (currentParseState == 1):
             if (len(entryPointData) != 0):
