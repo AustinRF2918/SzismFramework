@@ -18,6 +18,10 @@ std.parsePack
         paSet^entryPoint
             pa-SetPageAttributes/pa-Set.py
     paSetPageAttributes.parseEnd
+    bsAutoTemplater.parseScripts 
+        bsAutoTemplater^entryPoint 
+            bs-AutoTemplateGenerator/autoTemplater.py
+    bsAutoTemplater.parseEnd
 std.parseEnd
 stdConfig.parsePack
     agBoilerplateScripts.parseScripts 

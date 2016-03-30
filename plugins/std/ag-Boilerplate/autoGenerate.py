@@ -113,8 +113,8 @@ for i in HTMLDocNames:
 os.chdir(homePath)
 copyfile(globalBootstrapPath, os.path.join(scriptDirectory, "CSS", "Bootstrap", "bootstrap.css"))
 
-copyfile(globalJavascriptPaths[0].rstrip("\n"), os.path.join(scriptDirectory, "JS", "jquery.js" ))
-copyfile(globalJavascriptPaths[1].rstrip("\n"), os.path.join(scriptDirectory, "JS", "main.js" ))
-copyfile(globalJavascriptPaths[2].rstrip("\n"), os.path.join(scriptDirectory, "JS", "jquery.easing.min.js" ))
+copyfile(globalJavascriptPaths[0].rstrip("\n"), os.path.join(os.getcwd(), "JS", "jquery.js" ))
+copyfile(globalJavascriptPaths[1].rstrip("\n"), os.path.join(os.getcwd(), "JS", "main.js" ))
+copyfile(globalJavascriptPaths[2].rstrip("\n"), os.path.join(os.getcwd(), "JS", "jquery.easing.min.js" ))
 
 recursiveCopy(globalImageData, os.path.join(scriptDirectory, "IMG", "Prototype"), "Copying prototype image data.")
