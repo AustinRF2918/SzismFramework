@@ -1,0 +1,40 @@
+import os
+import sys
+import errno
+import shutil
+
+def copyData(sf, input):
+    try:
+        shutil.copytree(sf, input)
+    except OSError as exc:
+        if exc.errno == errno.ENOTDIR:
+            shutil.copy(sf, input)
+        else:
+            raise
+
+
+
+
+
+print("AutoTemplater Script | Copyright Austin Fell 2016 | Templates Copyright Start Bootstrap")
+
+scriptFolder = os.path.dirname(os.path.realpath(sys.argv[0]))
+currentDirectory = os.getcwd()
+subDirectories = []
+currentInput = 'Z'
+
+while (currentInput != 'E' and currentInput != 'e'):
+    print("V to view loaded templates, A to generate templates into current directory, E to exit.")
+    currentInput = input()
+    if (currentInput == "V" or currentInput == "v"):
+        print("Displaying all template folders inside " + scriptFolder + "/templates")
+        subFiles = os.listdir(scriptFolder + "/templates")
+        for i in subFiles:
+            print(i)
+            if os.path.isdir(i):
+                subDirectories.append(i)
+                print("Found" + i)
+    elif (currentInput == "A" or currentInput == "a"):
+        print("Please enter template name (If you do not know, the V command can help you with this)")
+        inputFolder = input()
+        copyData(scriptFolder, scriptFolder + "/" + "templates" + "/" + inputFolder);
