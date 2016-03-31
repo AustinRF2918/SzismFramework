@@ -1,3 +1,7 @@
+#This requires significant overhaul to work properly as a SASS object holder.
+#A basic idea for myself is to use this to modularly create websites even
+#Better than I was before.
+
 import os
 import sys
 import errno
@@ -13,7 +17,7 @@ def copytree(src, dst, symlinks=False, ignore=None):
         else:
             shutil.copy2(s, d)
 
-print("AutoTemplater Script | Copyright Austin Fell 2016 | Templates Copyright Start Bootstrap")
+print("Object Script (Collection)| Copyright Austin Fell 2016 | Templates Copyright Start Bootstrap")
 
 scriptFolder = os.path.dirname(os.path.realpath(sys.argv[0]))
 currentDirectory = os.getcwd()
@@ -21,7 +25,7 @@ subDirectories = []
 currentInput = 'Z'
 
 while (currentInput != 'E' and currentInput != 'e'):
-    print("V to view loaded templates, A to generate templates into current directory, E to exit.")
+    print("V to view a hierarchy of data, A to place an object into current folder, E to exit.")
     currentInput = input()
     if (currentInput == "V" or currentInput == "v"):
         print("Displaying all template folders inside " + scriptFolder + "/templates")
@@ -32,6 +36,7 @@ while (currentInput != 'E' and currentInput != 'e'):
                 subDirectories.append(i)
                 print("Found" + i)
     elif (currentInput == "A" or currentInput == "a"):
-        print("Please enter template name (If you do not know, the V command can help you with this)")
+        print("Please enter uniqid (prefaced with ui) or shorthand (prefaced with sh) (If you do not know, the V command can help you with this)")
         inputFolder = input()
+        #modify this
         copytree(scriptFolder + "/" + "templates" + "/" + inputFolder, os.getcwd());

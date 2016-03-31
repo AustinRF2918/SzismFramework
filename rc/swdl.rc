@@ -22,6 +22,10 @@ std.parsePack
         bsAutoTemplater^entryPoint 
             bs-AutoTemplateGenerator/autoTemplater.py
     bsAutoTemplater.parseEnd
+    saObjectDatabase.parseScripts 
+        saObjectDatabase^entryPoint
+            sa-ObjectDatabase/objectDatabase.py
+    saObjectDatabase.parseEnd
 std.parseEnd
 stdConfig.parsePack
     agBoilerplateScripts.parseScripts 
