@@ -3,6 +3,7 @@ from subprocess import call
 import os
 import re
 
+print("")
 parsePack = re.compile(r'(.*)' + '\.' + 'parsePack')
 parsePackEnd = re.compile(r'(.*)' + '\.' + 'parseEnd')
 parseScripts = re.compile(r'(.*)' + '\.' + 'parseScripts')
@@ -49,7 +50,6 @@ def parseRC(lineList, showData):
             if (showData):
                 print("Pushing: " + packData[0] + " to queue.")
             scopeQueue.append(packData[0])
-            print(packData[0])
             tempPackBuffer = packData[0]
 
 
@@ -85,6 +85,8 @@ def parseRC(lineList, showData):
                 scopeQueue.pop()
             else:
                 print("Error at descoping by: " + endPackData[0])
+
+    print("SWDL Framework | Copyright 2016 | Austin Fell")
 
     if len(scopeQueue) == 0:
         print("RC File parsed successfully.")
@@ -131,7 +133,6 @@ arguments = cla.parse_args()
 if (arguments.showInitialization):
     parseRC(rcScript, True)
 
-print("SWDL Framework | Copyright 2016 | Austin Fell")
 print("Type -showScripts in argument list for all underlying modules")
 
 for i in scriptList:
@@ -143,6 +144,7 @@ for i in scriptList:
 print("Make sure ALL SUBDIRECTORIES/SCRIPTS ARE IN DIRECTORY BELOW THIS SCRIPT!")
 
 if (arguments.showScripts):
+    print("")
     print("Available Scripts:")
     for i in scriptList:
         print(i)

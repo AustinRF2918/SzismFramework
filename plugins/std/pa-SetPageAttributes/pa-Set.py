@@ -55,7 +55,7 @@ print(JSResults)
 print('\n')
 
 print ("Checking for existence of paths.config inside of SWDL directory.")
-if (os.path.isfile(os.path.join(scriptFolder, 'paths.config'))):
+if (os.path.isfile(os.path.join(os.getcwd(), 'paths.config'))):
     print("File already exists.")
 else:
     print("File does not exist. Initializing data.")
@@ -84,7 +84,7 @@ else:
     getDocumentsGood = True
 
 if getDocumentsGood is True:
-    if (os.path.isfile(os.path.join(scriptFolder, 'swdlData.szi'))):
+    if (os.path.isfile(os.path.join(os.getcwd(), 'swdlData.szi'))):
         print("File already exists.")
     else:
         pathsData = open('project.config', 'w')
