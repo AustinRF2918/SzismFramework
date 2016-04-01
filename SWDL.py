@@ -86,8 +86,6 @@ def parseRC(lineList, showData):
             else:
                 print("Error at descoping by: " + endPackData[0])
 
-    print("SWDL Framework | Copyright 2016 | Austin Fell")
-
     if len(scopeQueue) == 0:
         print("RC File parsed successfully.")
     else:
@@ -104,15 +102,16 @@ def parseRC(lineList, showData):
         if (showData):
             print("FoundPD: " + str(packData) + " " + "FoundSD: " + str(scriptsData))
 
+print("SWDL Framework | Copyright 2016 | Austin Fell")
 
 rcScript = []
 
-with open('rcLocation.config') as rcLocationData:
-    rcLocation = rcLocationData.read().replace('\n', '')
-    rcExists = os.path.isfile(rcLocation)
+rcLocation = "configuration/swdl.rc"
+rcExists = os.path.isfile(rcLocation)
 
 if (not rcExists):
-    print("swdl.rc does not exist. Please configure a RC file by creating a rcLocation.config")
+    print("swdl.rc does not exist. Please configure a RC file by creating a putting it in a local configuration file with syntax in documentation.")
+    print("Standard library can be found on https://github.com/AustinRF2918/SzismTools.")
     print("with the pathname to swdl.rc. Make it relative.")
 else:
     rcScriptUnrefined = open(rcLocation).readlines()
@@ -144,7 +143,6 @@ for i in scriptList:
 print("Make sure ALL SUBDIRECTORIES/SCRIPTS ARE IN DIRECTORY BELOW THIS SCRIPT!")
 
 if (arguments.showScripts):
-    print("")
     print("Available Scripts:")
     for i in scriptList:
         print(i)
