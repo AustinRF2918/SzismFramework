@@ -1,5 +1,6 @@
 import argparse
 from subprocess import call
+import sys
 import os
 import re
 
@@ -68,7 +69,7 @@ def parseRC(lineList, showData):
                     print("Adding: " + pathData[0] + " to fileList.")
                     fileList.append("plugins" + "/" + tempPackBuffer + "/" + packData[0].replace(' ', ''))
             if currentEntryPointState is True:
-                entryPointDic[scriptList[len(scriptList) - 1].replace(' ', '')] = "plugins" + "/" + tempPackBuffer + "/" + pathData[0].replace(' ', '')
+                entryPointDic[scriptList[len(scriptList) - 1].replace(' ', '')] = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])), "plugins", tempPackBuffer, pathData[0].replace(' ', ''))
                 currentEntryPointState = False
 
         if (currentParseState == 1):
@@ -107,6 +108,7 @@ print("SWDL Framework | Copyright 2016 | Austin Fell")
 rcScript = []
 
 rcLocation = "configuration/swdl.rc"
+rcLocation = os.path.join(os.path.dirname(os.path.realpath(sys.argv[0])), rcLocation)
 rcExists = os.path.isfile(rcLocation)
 
 if (not rcExists):
