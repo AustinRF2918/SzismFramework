@@ -26,6 +26,14 @@ std.parsePack
         saObjectDatabase^entryPoint
             sa-ObjectDatabase/objectDatabase.py
     saObjectDatabase.parseEnd
+    fsAutoTemplater.parseScripts 
+        fsAutoTemplater^entryPoint
+            fs-AutoTemplateGenerator/autoTemplater.py
+    fsAutoTemplater.parseEnd
+    sassComponentTemplater.parseScripts 
+        sassComponentTemplater^entryPoint
+            sass-componentGenerator/autoTemplater.py
+    sassComponentTemplater.parseEnd
 std.parseEnd
 stdConfig.parsePack
     agBoilerplateScripts.parseScripts 
