@@ -34,6 +34,10 @@ std.parsePack
         sassComponentTemplater^entryPoint
             sass-componentGenerator/autoTemplater.py
     sassComponentTemplater.parseEnd
+    gulpInitialize.parseScripts
+        gulpInitialize^entryPoint
+            js-GulpInit/initializeGulp.py
+    gulpInitialize.parseEnd
 std.parseEnd
 stdConfig.parsePack
     agBoilerplateScripts.parseScripts 
