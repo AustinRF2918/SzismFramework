@@ -3,7 +3,7 @@ var os = require('os');
 
 var EXPRESS_PORT = 4001;
 var EXPRESS_ROOT = __dirname;
-var LIVERELOAD_PORT = 35730;
+var LIVERELOAD_PORT = 35729;
 
 var getNetworkInformation = function(){
     console.log("Starting express on local host: " + EXPRESS_PORT);
