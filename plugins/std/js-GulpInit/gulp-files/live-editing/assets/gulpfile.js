@@ -1,12 +1,14 @@
 var gulp = require('gulp');
 var os = require('os');
+var path = require('path')
+
 
 var EXPRESS_PORT = 4001;
 var EXPRESS_ROOT = __dirname;
 var LIVERELOAD_PORT = 35729;
 
 var getNetworkInformation = function(){
-    console.log("Starting express on local host: " + EXPRESS_PORT);
+    console.log("Starting Express on local host: " + EXPRESS_PORT);
     var interfaces = os.networkInterfaces();
     var addresses = [];
     for (var k in interfaces)
@@ -25,6 +27,7 @@ var getNetworkInformation = function(){
 }
 
 function startExpress(){
+    console.log("Initializing Express");
     var express = require('express');
     var app = express();
     app.use(require('connect-livereload')());
@@ -35,13 +38,16 @@ function startExpress(){
 var lr;
 
 function startLiveReload(){
+    console.log("Initializing Live-Reload");
     lr = require('tiny-lr')();
     lr.listen(LIVERELOAD_PORT);
 }
 
 function notifyLivereload(event){
-    var fileName = require('path').relative(EXPRESS_ROOT, event.path);
-    console.log("Change.");
+    var fileName = path.relative(EXPRESS_ROOT, event.path);
+    console.log("   Change on " + event.path);
+    console.log("   File type: " + path.extname(event.path));
+
 
     lr.changed({
         body: {
@@ -56,5 +62,5 @@ gulp.task('default', function()
     console.log(getNetworkInformation());
     startExpress();
     startLiveReload();
-    gulp.watch(['*.html', 'css/*.css', 'js/**/*'], notifyLivereload);
+    gulp.watch(['*.html', 'css/*.css', 'js/**/*', 'img/**/*', 'img/*'], notifyLivereload);
 })
